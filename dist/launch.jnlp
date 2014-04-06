@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jnlp codebase="file:/home/baltasarq/prjs/DroidKeyGen/dist/" href="launch.jnlp" spec="1.0+">
+    <information>
+        <title>DroidKeyGen</title>
+        <vendor>baltasarq</vendor>
+        <homepage href=""/>
+        <description>DroidKeyGen</description>
+        <description kind="short">DroidKeyGen</description>
+        
+        
+    <icon href="key.png" kind="default"/>
+<offline-allowed/>
+</information>
+    <update check="background"/>
+    <security>
+<all-permissions/>
+</security>
+    <resources>
+        <j2se version="1.7+"/>
+        <jar href="DroidKeyGen.jar" main="true"/>
+        
+        
+    </resources>
+    <application-desc main-class="droidkeygen.ui.DroidKeyGen">
+        
+    </application-desc>
+</jnlp>
