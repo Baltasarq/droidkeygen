@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DroidKeyGen:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DroidKeyGen_jar</output-path>
+    <root id="archive" name="DroidKeyGen.jar">
+      <element id="module-output" name="DroidKeyGen" />
+    </root>
+  </artifact>
+</component>

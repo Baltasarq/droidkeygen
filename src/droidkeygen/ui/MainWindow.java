@@ -5,15 +5,14 @@ package droidkeygen.ui;
 import droidkeygen.core.AppInfo;
 import droidkeygen.core.KeyInfo;
 import droidkeygen.core.KeyManager;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import java.security.*;
 import java.security.cert.CertificateException;
-import javax.swing.AbstractAction;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 
 /**
  * The main window of the app.
@@ -40,8 +39,8 @@ public class MainWindow extends Frame {
     protected void onGenerate()
     {
         this.pnlPswLoad.setVisible( false );
-        this.pnlData.setVisible( true );
-        this.lblStatus.setText( "Ready" );
+        this.pnlData.setVisible(true);
+        this.lblStatus.setText("Ready");
         this.pack();
         this.edAlias.requestFocusInWindow();
     }
@@ -52,8 +51,8 @@ public class MainWindow extends Frame {
     protected void onCheckKey()
     {
         this.pnlData.setVisible( false );
-        this.pnlPswLoad.setVisible( true );
-        this.lblStatus.setText( "Ready" );
+        this.pnlPswLoad.setVisible(true);
+        this.lblStatus.setText("Ready");
         this.pack();
         this.edPswLoad.requestFocusInWindow();
     }
@@ -252,59 +251,113 @@ public class MainWindow extends Frame {
         this.pnlName = new Panel();
         Label lblName = new Label( "Complete name: " );
         this.edName = new TextField( 40 );
+        this.edName.setMaximumSize( new Dimension( Integer.MAX_VALUE, this.edName.getPreferredSize().height ) );
+        Box nameBox = Box.createVerticalBox();
+        nameBox.add( Box.createVerticalGlue() );
+        nameBox.add( this.edName );
+        nameBox.add( Box.createVerticalGlue() );
+
         Label lblAlias = new Label( "Alias: " );
         this.edAlias = new TextField( 40 );
+        this.edAlias.setMaximumSize( new Dimension( Integer.MAX_VALUE, this.edAlias.getPreferredSize().height ) );
+        Box aliasBox = Box.createVerticalBox();
+        aliasBox.add( Box.createVerticalGlue() );
+        aliasBox.add( this.edAlias );
+        aliasBox.add( Box.createVerticalGlue() );
+
         this.pnlName.setLayout( new GridLayout( 2,2 ) );
         this.pnlName.add( lblAlias );
-        this.pnlName.add( this.edAlias );
+        this.pnlName.add( aliasBox );
         this.pnlName.add( lblName );
-        this.pnlName.add( this.edName );
+        this.pnlName.add( nameBox );
         
         // Create firm panel
         this.pnlFirm = new Panel();
         Label lblFirm = new Label( "Company name: " );
         this.edFirm = new TextField( 40 );
+        this.edFirm.setMaximumSize( new Dimension( Integer.MAX_VALUE, this.edFirm.getPreferredSize().height ) );
+        Box firmBox = Box.createVerticalBox();
+        firmBox.add( Box.createVerticalGlue() );
+        firmBox.add( this.edFirm );
+        firmBox.add( Box.createVerticalGlue() );
+
         Label lblOu = new Label( "Organizational Unit: " );
         this.edOu = new TextField( 40 );
+        this.edOu.setMaximumSize( new Dimension( Integer.MAX_VALUE, this.edOu.getPreferredSize().height ) );
+        Box ouBox = Box.createVerticalBox();
+        ouBox.add( Box.createVerticalGlue() );
+        ouBox.add( this.edOu );
+        ouBox.add( Box.createVerticalGlue() );
+
         this.pnlFirm.setLayout( new GridLayout( 2,2 ) );
         this.pnlFirm.add( lblFirm );
-        this.pnlFirm.add( this.edFirm );
+        this.pnlFirm.add( firmBox );
         this.pnlFirm.add( lblOu );
-        this.pnlFirm.add( this.edOu );
+        this.pnlFirm.add( ouBox );
         
         // Create address panel
         this.pnlAddress = new Panel();
         Label lblCity = new Label( "City: " );
         this.edCity = new TextField( 40 );
+        this.edCity.setMaximumSize( new Dimension( Integer.MAX_VALUE, this.edCity.getPreferredSize().height ) );
+        Box cityBox = Box.createVerticalBox();
+        cityBox.add( Box.createVerticalGlue() );
+        cityBox.add( this.edCity );
+        cityBox.add( Box.createVerticalGlue() );
+
         Label lblState = new Label( "State: " );
         this.edState = new TextField( 40 );
+        this.edState.setMaximumSize( new Dimension( Integer.MAX_VALUE, this.edState.getPreferredSize().height ) );
+        Box stateBox = Box.createVerticalBox();
+        stateBox.add( Box.createVerticalGlue() );
+        stateBox.add( this.edState );
+        stateBox.add( Box.createVerticalGlue() );
+
         Label lblCountryCode = new Label( "Country code: " );
         this.cmbCountryCode = new Choice();
+        this.cmbCountryCode.setMaximumSize( new Dimension( Integer.MAX_VALUE, this.cmbCountryCode.getPreferredSize().height ) );
+        Box countryBox = Box.createVerticalBox();
+        countryBox.add( Box.createVerticalGlue() );
+        countryBox.add( this.cmbCountryCode );
+        countryBox.add( Box.createVerticalGlue() );
+
         for(String code: KeyInfo.getCountryCodes())  {
             this.cmbCountryCode.add( code );
         }
 
         this.pnlAddress.setLayout( new GridLayout( 3,2 ) );
         this.pnlAddress.add( lblCity );
-        this.pnlAddress.add( this.edCity );
+        this.pnlAddress.add( cityBox );
         this.pnlAddress.add( lblState );
-        this.pnlAddress.add( this.edState );
+        this.pnlAddress.add( stateBox );
         this.pnlAddress.add( lblCountryCode );
-        this.pnlAddress.add( this.cmbCountryCode );
+        this.pnlAddress.add( countryBox );
         
         // Create password panel
         this.pnlPsw = new Panel();
         Label lblPsw1 = new Label( "Password: " );
         this.edPsw1 = new TextField( 20 );
+        this.edPsw1.setMaximumSize( new Dimension( Integer.MAX_VALUE, this.edPsw1.getPreferredSize().height ) );
+        Box psw1Box = Box.createVerticalBox();
+        psw1Box.add(Box.createVerticalGlue());
+        psw1Box.add(this.edPsw1);
+        psw1Box.add(Box.createVerticalGlue());
+
         Label lblPsw2 = new Label( "Repeat password: " );
         this.edPsw2 = new TextField( 20 );
+        this.edPsw2.setMaximumSize( new Dimension( Integer.MAX_VALUE, this.edPsw2.getPreferredSize().height ) );
+        Box psw2Box = Box.createVerticalBox();
+        psw2Box.add( Box.createVerticalGlue() );
+        psw2Box.add( this.edPsw2 );
+        psw2Box.add( Box.createVerticalGlue() );
+
         this.edPsw1.setEchoChar( '*' );
         this.edPsw2.setEchoChar( '*' );
         this.pnlPsw.setLayout( new GridLayout( 3,2 ) );
         this.pnlPsw.add( lblPsw1 );
-        this.pnlPsw.add( this.edPsw1 );
+        this.pnlPsw.add( psw1Box );
         this.pnlPsw.add( lblPsw2 );
-        this.pnlPsw.add( this.edPsw2 );
+        this.pnlPsw.add( psw2Box );
         
         // Create the password only panel
         this.pnlPswLoad = new Panel();
@@ -312,11 +365,23 @@ public class MainWindow extends Frame {
         Label lblPswLoad = new Label( "Password: " );
         this.edPswLoad = new TextField( 20 );
         this.edPswLoad.setEchoChar( '*' );
+        this.edPswLoad.setMaximumSize( new Dimension( Integer.MAX_VALUE, this.edPswLoad.getPreferredSize().height ) );
+        Box loadBox = Box.createVerticalBox();
+        loadBox.add( Box.createVerticalGlue() );
+        loadBox.add( this.edPswLoad );
+        loadBox.add( Box.createVerticalGlue() );
+
         Button btLoadKey = new Button( "..." );
+        btLoadKey.setMaximumSize( new Dimension( Integer.MAX_VALUE, btLoadKey.getPreferredSize().height ) );
+        Box btLoadBox = Box.createVerticalBox();
+        btLoadBox.add( Box.createVerticalGlue() );
+        btLoadBox.add( btLoadKey );
+        btLoadBox.add( Box.createVerticalGlue() );
+
         this.pnlPswLoad.setLayout( new BoxLayout( this.pnlPswLoad, BoxLayout.LINE_AXIS ) );
         this.pnlPswLoad.add( lblPswLoad );
-        this.pnlPswLoad.add( this.edPswLoad );
-        this.pnlPswLoad.add( btLoadKey );
+        this.pnlPswLoad.add( loadBox );
+        this.pnlPswLoad.add( btLoadBox );
         btLoadKey.addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e)
@@ -331,10 +396,16 @@ public class MainWindow extends Frame {
         this.pnlAction = new Panel();
         this.pnlAction.setLayout( new BoxLayout( this.pnlAction, BoxLayout.LINE_AXIS ) );
         this.btSaveAs = new Button( "Save as..." );
+        this.btSaveAs.setMaximumSize( new Dimension( Integer.MAX_VALUE, this.btSaveAs.getPreferredSize().height ) );
+        Box btSaveBox = Box.createVerticalBox();
+        btSaveBox.add( Box.createVerticalGlue() );
+        btSaveBox.add( this.btSaveAs );
+        btSaveBox.add( Box.createVerticalGlue() );
+
         this.btSaveAs.addActionListener( onSaveKey );
         this.pnlAction.add( Box.createHorizontalGlue() );
         this.pnlAction.add( Box.createHorizontalGlue() );
-        this.pnlAction.add( this.btSaveAs );
+        this.pnlAction.add( btSaveBox );
         
         // Panel about
         Label lblInfo = new Label();
@@ -424,7 +495,6 @@ public class MainWindow extends Frame {
 
         Dimension preferredSize = new Dimension( 420, 470 );
         this.setMinimumSize( preferredSize );
-        this.setMaximumSize( preferredSize );
         this.setPreferredSize( preferredSize );
         
         // Events

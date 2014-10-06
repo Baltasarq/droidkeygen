@@ -2,6 +2,10 @@
 
 package droidkeygen.core;
 
+import sun.security.tools.keytool.CertAndKeyGen;
+import sun.security.x509.X500Name;
+
+import javax.security.auth.x500.X500Principal;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,9 +14,6 @@ import java.security.*;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Date;
-import javax.security.auth.x500.X500Principal;
-//import sun.security.x509.CertAndKeyGen;
-import sun.security.x509.X500Name;
 
 /**
  * The Key generator, wrapping the KeyStore class

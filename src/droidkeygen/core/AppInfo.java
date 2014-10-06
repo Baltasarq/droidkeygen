@@ -10,6 +10,6 @@ package droidkeygen.core;
  */
 public class AppInfo {
     public static final String Name = "DroidKeyGen";
-    public static final String Version = "v0.1 20120925";
+    public static final String Version = "v0.11 20141006";
     public static final String Author = "baltasarq@gmail.com";
 }
